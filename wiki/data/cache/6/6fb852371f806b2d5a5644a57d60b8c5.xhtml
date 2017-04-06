@@ -1,0 +1,136 @@
+
+<p>
+Insatll Tianocore
+Set Eth mac addr 
+</p>
+
+<p>
+0) Install Centos 7.1, DDR 32GB 
+</p>
+
+<p>
+Get new IP, DHCP:
+$ sudo dhclient -r eth0
+$ sudo dhclient eth0
+</p>
+
+<p>
+Install IPconfig:
+</p>
+
+<p>
+$ yum provides ifconfig
+$ yum install net-tools
+</p>
+
+<p>
+Config /etc/sysconfig/network-scripts
+Eth0: Onboot=yes
+$ cd
+$ yum clean all
+$ yum update
+Also, get a few basic utilities
+$ yum install wget bzip2 ftp net-tools 
+Set date &amp; time
+1) Download and install Centos Kernel:
+</p>
+
+<p>
+$ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>
+</p>
+
+<p>
+$ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-core-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-core-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-core-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>
+</p>
+
+<p>
+$ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-devel-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-devel-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-devel-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>
+</p>
+
+<p>
+$ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>
+</p>
+
+<p>
+$ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-extra-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-extra-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-modules-extra-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>
+</p>
+
+<p>
+<em>/ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-headers-4.0.1-300.ilp32.el7.centos.aarch64.rpm" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-headers-4.0.1-300.ilp32.el7.centos.aarch64.rpm" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/kernel-headers-4.0.1-300.ilp32.el7.centos.aarch64.rpm</a>   ←close
+
+</em>/ wget <a href="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/0001-Centos-Support-ILP32.patch" class="urlextern" title="ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/0001-Centos-Support-ILP32.patch" rel="nofollow">ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/ilp32/0001-Centos-Support-ILP32.patch</a>  ← close
+</p>
+
+<p>
+1.1) Install kernel
+</p>
+
+<p>
+ $ rpm -i –force –nodeps *.rpm 
+ $ reboot
+</p>
+
+<p>
+2)Install APM Native Toolchain
+??? Link down load toolchain 8.0.10  ???? 
+$ wget <a href="ftp://apmfae:Ma4tha@ftp3.apm.com/outbound/shadowcat/centos/apm-8.0.10-le-20150429-nativetools.tar.bz2" class="urlextern" title="ftp://apmfae:Ma4tha@ftp3.apm.com/outbound/shadowcat/centos/apm-8.0.10-le-20150429-nativetools.tar.bz2" rel="nofollow">ftp://apmfae:Ma4tha@ftp3.apm.com/outbound/shadowcat/centos/apm-8.0.10-le-20150429-nativetools.tar.bz2</a>
+  $ tar xvf apm-8.0.10-le-20150429-nativetools.tar.bz2 –C /usr/local
+</p>
+<pre class="code">$ cd /lib
+$ ln -s /usr/local/tools/usr/aarch64-apm-linux-gnu/libc/lib/ld-linux-aarch64_ilp32.so.1</pre>
+
+<p>
+3)Set PATH environment to use APM gcc from the previously downloaded APM toolchain
+</p>
+<pre class="code">$ PATH=/usr/local/tools/usr/bin:${PATH}
+$ export PATH</pre>
+
+<p>
+4)Load Specint12:
+</p>
+<pre class="code">$ftp ftp.apm.com
+$login: amccsw
+$passwd: special4u</pre>
+
+<p>
+  $ftp&gt; cd /outbound/storm/SPEC
+</p>
+<pre class="code"> ftp&gt; bin
+ ftp&gt; get specint12.tgz
+ ftp&gt; bye</pre>
+
+<p>
+5)Untar Specint12 
+</p>
+<pre class="code">$ mkdir /opt/specint12-untar</pre>
+
+<p>
+cd 
+</p>
+<pre class="code">$ tar vxf specint12.tgz -C /opt/specint12-untar</pre>
+
+<p>
+6)Install APM SPECint pre-compiled tools 
+cd 
+</p>
+<pre class="code">$ wget http://www.spec.org/cpu2006/src.alt/linux-apm-arm64-118.tar   
+$ tar vxf linux-apm-arm64-118.tar -C specint12-untar/specint12 
+$ mkdir /opt/specint12
+$ cd /opt/specint12-untar/specint12
+$ ./install.sh -u linux-apm-arm64 -d /opt/specint12/</pre>
+
+<p>
+reboot 
+</p>
+
+<p>
+7) Run SPECint
+### Edit /opt/specinit12/config/linux_arm64_le_peak.cfg and add the following:
+APM_TOOLCHAIN_PATH=/usr/local/tools
+SPECINT_PATH=/opt/specint12
+####Run SPECint
+$ cd /opt/specint12
+$ source ./shrc
+$ export LD_LIBRARY_PATH=/opt/apm/8.0.10-le/usr/aarch64-apmlinux-gnu/libc/libilp32:$LD_LIBRARY_PATH
+$ runspec –config=linux_arm64_le_peak.cfg –size=ref –rate=8 –noreportable int
+</p>

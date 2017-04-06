@@ -1,0 +1,70 @@
+
+<h3 class="sectionedit1" id="getting_ceph">GETTING CEPH</h3>
+<div class="level3">
+<pre class="code">git clone git://github.com/ceph/ceph.git</pre>
+
+</div>
+<!-- EDIT1 SECTION "GETTING CEPH" [1-66] -->
+<h3 class="sectionedit2" id="install_ceph_deploy">INSTALL CEPH DEPLOY</h3>
+<div class="level3">
+
+<p>
+The ceph-deploy tool enables you to set up and tear down Ceph clusters for development, testing and proof-of-concept projects.
+To install ceph-deploy with apt, execute the following:
+</p>
+<pre class="code">sudo apt-get update &amp;&amp; sudo apt-get install ceph-deploy
+#sudo yum install ceph-deploy</pre>
+
+</div>
+<!-- EDIT2 SECTION "INSTALL CEPH DEPLOY" [67-372] -->
+<h3 class="sectionedit3" id="ceph_installation">CEPH INSTALLATION</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> Add keypublic</div>
+</li>
+</ol>
+
+<p>
+  wget -q -O- &#039;<a href="https://download.ceph.com/keys/release.asc" class="urlextern" title="https://download.ceph.com/keys/release.asc" rel="nofollow">https://download.ceph.com/keys/release.asc</a>&#039; | sudo apt-key add -
+</p>
+<ol>
+<li class="level1"><div class="li"> Add ceph repo to apt source</div>
+</li>
+<li class="level1"><div class="li"> Update /etc/hosts file with name resolutions</div>
+</li>
+</ol>
+
+<p>
+  echo deb <a href="http://ceph.com/debian-firefiy/" class="urlextern" title="http://ceph.com/debian-firefiy/" rel="nofollow">http://ceph.com/debian-firefiy/</a>$(lsb_release -sc)main |sudo tee /etc/apt/source.list.d/ceph.list
+</p>
+<ol>
+<li class="level1"><div class="li"> Make sure you can login to all the ceph hosts passwordless</div>
+</li>
+<li class="level1"><div class="li"> Create a ceph-cluster folder and movw to that folder</div>
+</li>
+<li class="level1"><div class="li"> Install ceph-deploy</div>
+</li>
+<li class="level1"><div class="li"> Make ceph hosts ready for the ceph installation</div>
+</li>
+<li class="level1"><div class="li"> Add below configuiration in ceph.conf generated</div>
+</li>
+<li class="level1"><div class="li"> Install all ceph components on all the ceph hosts</div>
+</li>
+<li class="level1"><div class="li"> Make sure you find the below files in the directory</div>
+</li>
+<li class="level1"><div class="li"> Deploy initial monitor for ceph</div>
+</li>
+<li class="level1"><div class="li"> Make sure after completion below files are to be present</div>
+</li>
+<li class="level1"><div class="li"> Format all the drives for OSD</div>
+</li>
+<li class="level1"><div class="li"> Prepare OSD</div>
+</li>
+<li class="level1"><div class="li"> Activate the OSDs</div>
+</li>
+<li class="level1"><div class="li"> </div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT3 SECTION "CEPH INSTALLATION" [373-] -->

@@ -1,0 +1,27 @@
+==== GETTING CEPH ====
+  git clone git://github.com/ceph/ceph.git
+==== INSTALL CEPH DEPLOY ====
+The ceph-deploy tool enables you to set up and tear down Ceph clusters for development, testing and proof-of-concept projects.
+To install ceph-deploy with apt, execute the following:
+  sudo apt-get update && sudo apt-get install ceph-deploy
+  #sudo yum install ceph-deploy
+  
+==== CEPH INSTALLATION ====
+  - Add keypublic
+  wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
+  - Add ceph repo to apt source
+  - Update /etc/hosts file with name resolutions
+  echo deb http://ceph.com/debian-firefiy/$(lsb_release -sc)main |sudo tee /etc/apt/source.list.d/ceph.list
+  - Make sure you can login to all the ceph hosts passwordless
+  - Create a ceph-cluster folder and movw to that folder
+  - Install ceph-deploy
+  - Make ceph hosts ready for the ceph installation
+  - Add below configuiration in ceph.conf generated
+  - Install all ceph components on all the ceph hosts
+  - Make sure you find the below files in the directory
+  - Deploy initial monitor for ceph
+  - Make sure after completion below files are to be present
+  - Format all the drives for OSD
+  - Prepare OSD
+  - Activate the OSDs
+  - 

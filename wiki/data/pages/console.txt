@@ -1,0 +1,24 @@
+<wrap em>Mustang Board</wrap>
+  console=ttyS0,115200 earlyprintk=uart8250-32bit,0x1c020000 rw debug
+  console=ttyS0,115200 earlyprintk=uart8250-32bit,0x1c020000 rw debug
+  root=/dev/ram rw console=ttyS0,115200 earlyprintk=uart8250-32bit,0x1c020000 debug
+  root=/dev/ram rw console=ttyS0,115200 earlycon=uart8250,mmio32,0x1c020000 debug
+  # Suse installer
+  console=ttyS0,115200 earlycon=uart8250,mmio32,0x1c020000 rw debug
+  # rootfsrecompile
+  root=/dev/sda rw console=ttyS0,115200 earlycon=uart8250,mmio32,0x1c020000 debug
+<wrap em>Merlin Board</wrap>
+  console=ttyS0,115200 earlycon=uart8250,mmio32,0x10600000 debug
+<wrap em>Ubuntu boot up ACPI</wrap>
+  earlycon=uart8250,mmio32,0x1c020000 acpi=force console=ttyS0,115200
+  earlycon=uart8250,mmio32,0x1c020000 acpi=force console=ttyS0,115200n8 rw
+  earlycon=uart8250,mmio32,0x10600000 acpi=force console=ttyS0,115200
+  acpi=force,earlycon=uart8250,mmio32,console=ttyS0,115200
+  linux   /boot/vmlinuz-4.4.0-53-generic root=UUID=63e270db-42ef-433f-8118-2b6d03f62668 ro acpi=force,earlycon=uart8250,mmio32,console=ttyS0,115200 splash quiet $vt_handoff
+        initrd  /boot/initrd.img-4.4.0-53-generic
+<wrap em>VGA</wrap> 
+  
+  To select serial display add in grub, no display on console: 
+  console=ttyS0,115200
+  
+  

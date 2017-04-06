@@ -1,0 +1,165 @@
+<pre class="code">  
+#!/bin/bash
+irqpid=`pidof irqbalance`
+echo &quot;kill -9 ${irqpid}&quot;
+kill -9 ${irqpid}
+echo &quot;pidof irqbalance&quot;
+pidof irqbalance
+echo ff &gt; /sys/class/net/eth1/queues/rx-0/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-1/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-2/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-3/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-4/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-5/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-6/rps_cpus
+echo ff &gt; /sys/class/net/eth1/queues/rx-7/rps_cpus
+echo &quot;cat /sys/class/net/eth1/queues/rx-?/rps_cpus&quot;
+cat /sys/class/net/eth1/queues/rx-?/rps_cpus</pre>
+<div class="table sectionedit1"><table class="inline">
+	<tr class="row0">
+		<th class="col0 centeralign" rowspan="2">  Tools                   </th><th class="col1 centeralign" colspan="2">  PVT Board &amp; 3.06.21 Release &amp;<br/>
+Ubuntu 161011+apm                                     </th><th class="col3 centeralign" colspan="2">  DVT board &amp; AMI BIOS &amp;<br/>
+Ubuntu 161011+apm                                                       </th>
+	</tr>
+	<tr class="row1">
+		<th class="col0 centeralign">  TX rate (Gbit/sec)                                 </th><th class="col1 centeralign">  RX rate (Gbit/sec)               </th><th class="col2 centeralign">  TX rate (Gbit/sec)                          </th><th class="col3 centeralign">  RX rate (Gbit/sec)                                 </th>
+	</tr>
+	<tr class="row2">
+		<th class="col0 leftalign" colspan="5"> Iperf tool                                                                                                                                                                                                          </th>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 8.24                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> (6.88 - 9.41)                                       </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 9.48                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> (9.39 - 9.48)                                       </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 9.48                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> 9.48                                                </td>
+	</tr>
+	<tr class="row6">
+		<th class="col0 leftalign" colspan="5"> Iperf3 tool                                                                                                                                                                                                         </th>
+	</tr>
+	<tr class="row7">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 8.62                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> 9.12                                                </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 6.95                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> 8.84                                                </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign"> 9.48                                                </td><td class="col2 leftalign"> 8.15                              </td><td class="col3 leftalign"> 9.48                                         </td><td class="col4 leftalign"> 8.18                                                </td>
+	</tr>
+	<tr class="row10">
+		<th class="col0 leftalign" colspan="5"> Iperf tool                                                                                                                                                                                                          </th>
+	</tr>
+	<tr class="row11">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign"> irqs on: 9.48 <br/>
+irqs off: 9.48                     </td><td class="col2 leftalign"> irqb on:  8.50<br/>
+irqb off: 8.21   </td><td class="col3 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48              </td><td class="col4 leftalign"> irqb on:  (8.53 - 9.41)<br/>
+irqb off: 8.58            </td>
+	</tr>
+	<tr class="row12">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign"> irqb on: 9.48<br/>
+irqb off: 9.48                      </td><td class="col2 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48   </td><td class="col3 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48              </td><td class="col4 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.47                     </td>
+	</tr>
+	<tr class="row13">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign"> irqb on: 9.48<br/>
+irqb off: 9.48                      </td><td class="col2 leftalign"> irqb on: 9.48 <br/>
+irqb off: 9.48   </td><td class="col3 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48              </td><td class="col4 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48                     </td>
+	</tr>
+	<tr class="row14">
+		<th class="col0 leftalign" colspan="5"> Iperf3 tool                                                                                                                                                                                                         </th>
+	</tr>
+	<tr class="row15">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign"> irqb on: 9.48<br/>
+irqb off: 9.48                      </td><td class="col2 leftalign"> irqs on:  8.36<br/>
+irqs off: 8.05   </td><td class="col3 leftalign"> irqb on: 9.48  <br/>
+irqb off: 9.48             </td><td class="col4 leftalign"> irqb on:  (8.41 - 9.19)<br/>
+irqb off: 9.19            </td>
+	</tr>
+	<tr class="row16">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign"> irqb on: 9.48<br/>
+irqb off: 9.48                      </td><td class="col2 leftalign"> irqb on:  7.92<br/>
+irqb off: 9.20   </td><td class="col3 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48              </td><td class="col4 leftalign"> irqb on:  (7.87 - 9.19) <br/>
+irqb off: (7.89 - 9.32)  </td>
+	</tr>
+	<tr class="row17">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign"> irqb on: 9.48<br/>
+irqb off: 9.48                      </td><td class="col2 leftalign"> irqb on:  9.10<br/>
+irqb off:  9.45  </td><td class="col3 leftalign"> irqb on:  9.48<br/>
+irqb off: 9.48              </td><td class="col4 leftalign"> irqb on:  (7.89 - 9.20)<br/>
+irqb off: (7.98 - 8.39)   </td>
+	</tr>
+	<tr class="row18">
+		<th class="col0 leftalign" colspan="5">                                                                                                                                                                                                                     </th>
+	</tr>
+	<tr class="row19">
+		<td class="col0 leftalign">                          </td><th class="col1 centeralign" colspan="2">  PVT Board &amp; 3.06.22 Release &amp;<br/>
+Linux Net-Next                                        </th><th class="col3 centeralign" colspan="2">  DVT board &amp; AMI BIOS &amp;<br/>
+Ubuntu 161011+apm                                                       </th>
+	</tr>
+	<tr class="row20">
+		<td class="col0 leftalign">                          </td><td class="col1 leftalign"> TX rate (Gbit/sec)                                  </td><td class="col2 leftalign"> RX rate (Gbit/sec)                </td><td class="col3 leftalign"> TX rate (Gbit/sec)                           </td><td class="col4 leftalign"> RX rate (Gbit/sec)                                  </td>
+	</tr>
+	<tr class="row21">
+		<th class="col0 leftalign" colspan="5"> Iperf tool                                                                                                                                                                                                          </th>
+	</tr>
+	<tr class="row22">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row23">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row24">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row25">
+		<th class="col0 leftalign" colspan="5"> Iperf3 tool                                                                                                                                                                                                         </th>
+	</tr>
+	<tr class="row26">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row27">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row28">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row29">
+		<th class="col0 leftalign" colspan="5"> Iperf tool + Optimize1                                                                                                                                                                                              </th>
+	</tr>
+	<tr class="row30">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row31">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row32">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row33">
+		<th class="col0 leftalign" colspan="5"> Iperf3 tool + Optimize1                                                                                                                                                                                             </th>
+	</tr>
+	<tr class="row34">
+		<td class="col0 leftalign"> 1 Thread                 </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row35">
+		<td class="col0 leftalign"> 4 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row36">
+		<td class="col0 leftalign"> 8 Threads                </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row37">
+		<td class="col0 leftalign">                          </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+	<tr class="row38">
+		<td class="col0 leftalign">                          </td><td class="col1 leftalign">                                                     </td><td class="col2 leftalign">                                   </td><td class="col3 leftalign">                                              </td><td class="col4 leftalign">                                                     </td>
+	</tr>
+</table></div>
+<!-- EDIT1 TABLE [667-9246] -->

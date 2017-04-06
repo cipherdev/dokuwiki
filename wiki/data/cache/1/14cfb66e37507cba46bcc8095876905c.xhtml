@@ -1,0 +1,37 @@
+
+<h1 class="sectionedit1" id="uefi">UEFI</h1>
+<div class="level1">
+<hr />
+
+</div>
+<!-- EDIT1 SECTION "UEFI" [1-25] -->
+<h3 class="sectionedit2" id="tianocore_debuging">Tianocore Debuging</h3>
+<div class="level3">
+<pre class="code">[LibraryClasses]
+  SerialPortLib &gt;&gt;&gt; in inf file
+#include &lt;Library/PrintLib.h&gt;
+#include &lt;Library/SerialPortLib.h&gt;
+CHAR8           Buffer[100];
+UINTN           CharCount;
+CharCount = AsciiSPrint (Buffer,sizeof (Buffer),&quot;CMU_REG9 %x \n\r&quot;,value);
+SerialPortWrite ((UINT8 *) Buffer, CharCount);</pre>
+<hr />
+
+</div>
+<!-- EDIT2 SECTION "Tianocore Debuging" [26-371] -->
+<h3 class="sectionedit3" id="boot_uefi-uhp_on-top_uboot">Boot UEFI-UHP on-top Uboot</h3>
+<div class="level3">
+<pre class="code">setenv uefi &#039;tftp 0x4002000000 ${user_dir}/mustang_tianocore_spi.fd; tftp 0x1d000000 ${user_dir}/mustang_tianocore_sec_spi.fd; go 0x1d000000&#039;
+setenv uefi &#039;tftp 0x4002000000 ${user_dir}/mustang_tianocore_ubt.fd; tftp 0x1d000000 ${user_dir}/mustang_tianocore_sec_ubt.fd; go 0x1d000000&#039;</pre>
+
+</div>
+
+<h4 id="clean_and_make_tianocore_-_magneto_branch">Clean and make tianocore - Magneto branch</h4>
+<div class="level4">
+<pre class="code">make BOARD_NAME=mustang BUILD_ENDIAN=little -C tianocore clean
+make -C tianocore distclean
+make BE=0 tianocore_basetools
+make tianocore_mustang tianocore_mustang_media tianocore_merlin tianocore_merlin_media</pre>
+
+</div>
+<!-- EDIT3 SECTION "Boot UEFI-UHP on-top Uboot" [372-] -->

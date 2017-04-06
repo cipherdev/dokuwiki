@@ -1,0 +1,266 @@
+
+<h1 class="sectionedit1" id="working_with_centos">Working with CentOS</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT1 SECTION "Working with CentOS" [1-35] -->
+<h2 class="sectionedit2" id="centos_installation">CentOS Installation</h2>
+<div class="level2">
+
+<p>
+General installation instruction is here:
+</p>
+<pre class="code">  http://wiki.centos.org/SpecialInterestGroup/AltArch/AArch64/Mustang</pre>
+
+</div>
+<!-- EDIT2 SECTION "CentOS Installation" [36-184] -->
+<h3 class="sectionedit3" id="net_install">Net Install</h3>
+<div class="level3">
+
+<p>
+At this time, Net Install for CentOS 7.1 only works with Mustang. CentOS 7.2 version should work with Merlin but not yet verified.
+</p>
+
+<p>
+Prepare a USB driver for installation using
+</p>
+<ul>
+<li class="level1"><div class="li"> CentOS 7.1: <a href="http://mirror.centos.org/altarch/7/os/aarch64/images/boot.iso" class="urlextern" title="http://mirror.centos.org/altarch/7/os/aarch64/images/boot.iso" rel="nofollow">http://mirror.centos.org/altarch/7/os/aarch64/images/boot.iso</a></div>
+</li>
+<li class="level1"><div class="li"> CentOS 7.2: <a href="http://mirror.centos.org/altarch/7.2.1511/os/aarch64/images/boot.iso" class="urlextern" title="http://mirror.centos.org/altarch/7.2.1511/os/aarch64/images/boot.iso" rel="nofollow">http://mirror.centos.org/altarch/7.2.1511/os/aarch64/images/boot.iso</a></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT3 SECTION "Net Install" [185-559] -->
+<h3 class="sectionedit4" id="usb_complete_install">USB complete Install</h3>
+<div class="level3">
+
+<p>
+This procedure should also work with all boards.
+</p>
+
+</div>
+
+<h4 id="preparation">Preparation</h4>
+<div class="level4">
+
+<p>
+Prepare a large &gt; 6GB USB drive as follows:
+</p>
+
+<p>
+Download the CentOS ISO
+</p>
+<ul>
+<li class="level1"><div class="li"> CentOS 7.1: <a href="http://mirror.centos.org/altarch/7/isos/aarch64/CentOS-7-aarch64-Everything.iso" class="urlextern" title="http://mirror.centos.org/altarch/7/isos/aarch64/CentOS-7-aarch64-Everything.iso" rel="nofollow">http://mirror.centos.org/altarch/7/isos/aarch64/CentOS-7-aarch64-Everything.iso</a></div>
+</li>
+<li class="level1"><div class="li"> CentOS 7.2: <a href="http://mirror.centos.org/altarch/7.2.1511/isos/aarch64/CentOS-7-aarch64-Everything.iso" class="urlextern" title="http://mirror.centos.org/altarch/7.2.1511/isos/aarch64/CentOS-7-aarch64-Everything.iso" rel="nofollow">http://mirror.centos.org/altarch/7.2.1511/isos/aarch64/CentOS-7-aarch64-Everything.iso</a></div>
+</li>
+</ul>
+
+<p>
+Image the ISO on a USB drive (&gt; 8 <abbr title="Gigabyte">GB</abbr>)
+</p>
+
+</div>
+
+<h4 id="installation">Installation</h4>
+<div class="level4">
+
+<p>
+Insert the USB drive to target board
+</p>
+
+<p>
+Boot the board and go to Tianocore boot menu
+</p>
+
+<p>
+At the shell prompt, type FS1:\EFI\BOOT\BOOTAA64.EFI # If you get an error here, try FS0: instead.
+</p>
+
+<p>
+Modify the boot menu to include
+</p>
+<pre class="code">  For Merlin:   earlycon=uart8250,mmio32,0x10600000
+  For Mustang:  earlycon=uart8250,mmio32,0x1c020000
+  </pre>
+
+<p>
+Follow the installation screen.
+</p>
+
+</div>
+<!-- EDIT4 SECTION "USB complete Install" [560-1365] -->
+<h3 class="sectionedit5" id="enable_verify_networking">Enable/Verify Networking</h3>
+<div class="level3">
+
+<p>
+Verify that Networking is set up for DHCP OK as in the following example. Make sure BOOTPROTO=dhcp and
+ONBOOT=yes
+</p>
+<pre class="code">  $ vi /etc/sysconfig/network-scripts/ifcfg-eth0
+  TYPE=Ethernet
+  BOOTPROTO=dhcp
+  DEFROUTE=yes
+  PEERDNS=yes
+  PEERROUTES=yes
+  IPV4_FAILURE_FATAL=no
+  IPV6INIT=yes
+  IPV6_AUTOCONF=yes
+  IPV6_DEFROUTE=yes
+  IPV6_PEERDNS=yes
+  IPV6_PEERROUTES=yes
+  IPV6_FAILURE_FATAL=no
+  NAME=eth0
+  UUID=e73cb339-215b-44c8-b13e-e31d77ac9d81
+  DEVICE=eth0
+  ONBOOT=yes
+  
+  $ reboot</pre>
+
+</div>
+
+<h4 id="updates">Updates</h4>
+<div class="level4">
+
+<p>
+After installation, update the software
+</p>
+<pre class="code">  cd
+  yum clean all
+  yum update
+  yum install wget ftp net-tools bzip2</pre>
+
+</div>
+<!-- EDIT5 SECTION "Enable/Verify Networking" [1366-2063] -->
+<h2 class="sectionedit6" id="working_with_centos_kernel">Working with CentOS kernel</h2>
+<div class="level2">
+
+</div>
+<!-- EDIT6 SECTION "Working with CentOS kernel" [2064-2103] -->
+<h3 class="sectionedit7" id="install_necessary_development_packages">Install necessary Development packages</h3>
+<div class="level3">
+<pre class="code">  # yum groupinstall &quot;Development Tools&quot;
+  # yum install ncurses-devel
+  # yum install hmaccalc zlib-devel binutils-devel elfutils-devel libelf-devel newt-devel python-devel
+  # yum install audit-libs-devel numactl-devel pciutils-devel
+  # yum install bc bison perl-ExtUtils-Embed.noarch xmlto asciidoc</pre>
+
+</div>
+<!-- EDIT7 SECTION "Install necessary Development packages" [2104-2467] -->
+<h3 class="sectionedit8" id="obtain_centos_sources">Obtain CentOS Sources</h3>
+<div class="level3">
+
+<p>
+First, clone centos-git-common
+</p>
+<pre class="code">  $ git clone git://git.centos.org/centos-git-common.git
+  </pre>
+
+<p>
+There are two git trees, with the default match with RHELSA release at
+</p>
+<pre class="code">  $ git clone git://git.centos.org/sig-altarch/kernel.git sig-altarch-kernel
+  $ cd sig-altarch-kernel/
+  $ git branch -a
+    remotes/origin/3.19
+    remotes/origin/HEAD -&gt; origin/master
+    remotes/origin/cavium
+  * remotes/origin/master
+    remotes/origin/sig-altarch7-aarch64
+    remotes/origin/xen</pre>
+<pre class="code">  $ git checkout -b sig-altarch7-aarch64 remotes/origin/sig-altarch7-aarch64  &lt;== This would give the latest 4.2-based kernel
+  
+  or
+  
+  $ git checkout -b 3.19 remotes/origin/3.19 &lt;== This would give the 3.19 kernel
+  </pre>
+
+<p>
+In the following, we&#039;ll be working with sig-altarch-kernel/ directory on branch sig-altarch7-aarch64 (linux kernel 4.2)
+</p>
+
+<p>
+Obtain the source tar ball:
+</p>
+<pre class="code">  $ cd sig-altarch-kernel/
+  $ ../centos-git-common/get_sources.sh</pre>
+
+<p>
+Depending on the CentOS build version, you&#039;ll get a compressed source tar ball under SOURCES/ e.g.
+</p>
+<pre class="code">  linux-4.2.0-0.21.el7.tar.xz</pre>
+
+</div>
+<!-- EDIT8 SECTION "Obtain CentOS Sources" [2468-3581] -->
+<h3 class="sectionedit9" id="building_and_installing_new_centos_kernel">Building and Installing (new) CentOS kernel</h3>
+<div class="level3">
+
+<p>
+To build CentOS kernel,
+</p>
+<pre class="code">   $ cd sig-altarch-kernel/
+   $ rpmbuild --define &quot;%_topdir `pwd`&quot; -bb SPECS/kernel-aarch64.spec
+   </pre>
+
+<p>
+ A set of RPMs will be generated under RPMS/aarch64.  Installing them by
+</p>
+<pre class="code">  $ cd RPMS/aarch64/
+  $ rpm -ivh *.rpm
+  $ reboot</pre>
+
+</div>
+<!-- EDIT9 SECTION "Building and Installing (new) CentOS kernel" [3582-3901] -->
+<h3 class="sectionedit10" id="building_a_customized_centos_kernel">Building a customized CentOS kernel</h3>
+<div class="level3">
+
+<p>
+If you are patching the Linux kernel source code, copy the patches to the SOURCES/ directory
+Then edit SPECS/kernel-aarch64.<abbr title="specification">spec</abbr> and list the patches there, as in the following example
+</p>
+<pre class="code">  Source59: config-debug
+  
+  +# APM patches
+  +Patch1001: 0001-PCI-xgene-Add-support-for-a-64-bit-prefetchable-memo.patch
+  +Patch1002: 0002-pci-xgene-hide-X-Gene-BAR0-1-in-case-of-xgene_raw_pc.patch
+  +Patch1003: 0003-mailbox-Add-APM-Xgene-platform-mailbox-driver.patch
+  +Patch1004: 0004-drivers-i2c-add-X-Gene-SlimPro-I2C-driver.patch
+  +Patch1005: 0005-drivers-net-xgene-Add-TSO-support-RGMII-Delay-and-RG.patch
+  +Patch1006: 0006-arm64-copy_to-from-in_user-optimization-using-copy-t.patch</pre>
+<pre class="code">  # empty final patch to facilitate testing of kernel patches
+  Patch999999: linux-kernel-test.patch
+  
+  ...
+  
+  # Apply APM patches
+  git am %{PATCH1001}
+  git am %{PATCH1002}
+  git am %{PATCH1003}
+  git am %{PATCH1004}
+  git am %{PATCH1005}
+  git am %{PATCH1006}
+  ...
+  # apply security patch for cve-2016-0728</pre>
+<pre class="code">  git am %{PATCH2000}</pre>
+
+<p>
+If you are changing kernel configuration, edit SOURCES/config-centos-sig and add your CONFIG_XXX there.
+</p>
+
+<p>
+Due to a CentOS build bug, you cannot use config-local. If you want to use config-local, you might have to edit SOURCES/Makefile.config and make the following changes:
+</p>
+<pre class="code">  
+  -temp-generic: config-nodebug-merged config-generic-merged
+  +temp-generic: config-nodebug-merged config-generic-merged config-local-merged
+          cat $^ &gt; temp-generic</pre>
+
+<p>
+Re-build kernel as described before.
+</p>
+
+</div>
+<!-- EDIT10 SECTION "Building a customized CentOS kernel" [3902-] -->

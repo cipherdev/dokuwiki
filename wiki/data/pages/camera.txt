@@ -1,0 +1,3 @@
+<wrap em>Setup ENV + Build OpenCV</wrap>
+  https://github.com/projectnano/zeus/blob/master/tools/install-opencv.sh
+  sudo ./install-opencv.sh

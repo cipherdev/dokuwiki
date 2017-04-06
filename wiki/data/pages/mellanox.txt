@@ -1,0 +1,44 @@
+====== Update ======
+
+Download Mellanox Driver 3.0-1.0.1 for aarch64 at:
+<WRAP center round download 100%>
+http://www.mellanox.com/page/products_dyn?product_family=26&mtag=linux_sw_drivers
+</WRAP>
+{{ :09_22_14.png?700 |}}
+  #wget ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/apm-xgene-centos71-rpms.tar.xz
+  #wget ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/apm_centos_7.2_storm_160507.2.tar.xz
+  #rpm -i --force --nodeps *.rpm 
+  #reboot
+	tar -xvf MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64.tgz
+	cd MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64
+	./mlnx_add_kernel_support.sh  --mlnx_ofed ./ --make-tgz -y –v
+	If Done Created /tmp/MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz 
+	mkdir temp
+	cp –rf /tmp/MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz temp
+	cd temp && tar xvf MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz
+	cd MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext 
+	./mlnxofedinstall --all
+	reboot
+
+
+For more detail, refer at:
+<WRAP center round info 100%>
+http://www.mellanox.com/related-docs/prod_software/Mellanox_OFED_Linux_User_Manual_v3.0-1.0.1.pdf
+http://www.mellanox.com/related-docs/user_manuals/Connect-IB_Single_and_Dual_QSFP+_Port_PCI_Express_Gen3_%20x16_Adapter_Card_User_Manual.pdf
+</WRAP>
+
+==== Mellanox_MLX5_IB ====
+
+Activate IPoIB just by loading the ib_ipoib module
+	# modprobe ib_ipoib
+	# ibstat
+	# ibping -G 0x0002c90300eac7d0
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.083 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.076 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.070 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.070 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.068 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.069 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.066 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.068 ms
+	Pong from localhost.localdomain.(none) (Lid 1): time 0.065 ms

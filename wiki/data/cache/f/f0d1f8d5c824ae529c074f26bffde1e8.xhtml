@@ -1,0 +1,55 @@
+
+<h3 class="sectionedit1" id="autologin_on_ubuntu">Autologin on Ubuntu</h3>
+<div class="level3">
+<pre class="code">ssh-keygen
+ssh-copy-id -i root@ip_address
+ssh -Y root@ip_address</pre>
+<!-- EDIT2 PLUGIN_WRAP_START [0-] --><div class="wrap_center wrap_round wrap_tip plugin_wrap" style="width: 60%;">
+<p>
+DTC tools
+</p>
+</div><!-- EDIT3 PLUGIN_WRAP_END [0-] --><pre class="code">sudo apt-get install device-tree-compiler
+dtc -I fs /sys/firmware/devicetree/base</pre>
+<!-- EDIT4 PLUGIN_WRAP_START [0-] --><div class="wrap_center wrap_round wrap_help plugin_wrap" style="width: 60%;">
+<p>
+Builds
+</p>
+</div><!-- EDIT5 PLUGIN_WRAP_END [0-] -->
+<p>
+git clone &lt;source&gt;
+</p>
+<pre class="code">make defconfig</pre>
+
+<p>
+→make menuconfig
+→copy config from &lt;/boot/config&gt; ./.config
+make Image -j4
+→ ./arch/arm64/boot/Image
+</p>
+<pre class="code">./scripts/dtc/dtc -O dtb -R 16 -o ./arch/arm64/boot/apm-merlin.dtb ./arch/arm64/boot/dts/apm/apm-merlin.dts
+mkimage -A arm -O linux -C none -T kernel -a 0x00080000 -e 0x00080000 -n &quot;Linux-LE&quot; -d ./arch/arm64/boot/Image ./arch/arm64/boot/uImage</pre>
+
+<p>
+<span class="wrap_em ">resize</span>
+</p>
+<pre class="code">apt-get install cloud-utils
+growpart /dev/sda 2
+resize2fs /dev/sda2</pre>
+
+<p>
+<span class="wrap_em ">Upgrade Kernel Ubuntu</span>
+</p>
+<pre class="code">You could always do the following:
+apt-cache search linux-image
+Pick the one you want and then do:
+sudo apt-get install linux-image-your_version_choice</pre>
+
+<p>
+sudo apt-get purge –auto-remove package
+</p>
+
+<p>
+dtc -o apm-mustang.dtb -i . -O dtb -I dts tianocore/ArmPlatformPkg/APMXGenePkg/DeviceTree/apm-mustang.dts
+</p>
+
+</div>

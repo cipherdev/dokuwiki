@@ -1,0 +1,8 @@
+ gcc -o ss -g ss.c
+ list
+ quit
+ b number 
+ r : run
+ n: next
+ bt
+

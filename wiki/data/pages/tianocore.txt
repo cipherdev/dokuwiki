@@ -1,0 +1,26 @@
+====== UEFI ======
+
+----
+==== Tianocore Debuging ====
+ 
+
+  [LibraryClasses]
+    SerialPortLib >>> in inf file
+  #include <Library/PrintLib.h>
+  #include <Library/SerialPortLib.h>
+  CHAR8           Buffer[100];
+  UINTN           CharCount;
+  CharCount = AsciiSPrint (Buffer,sizeof (Buffer),"CMU_REG9 %x \n\r",value);
+  SerialPortWrite ((UINT8 *) Buffer, CharCount);
+
+----
+==== Boot UEFI-UHP on-top Uboot ====
+  setenv uefi 'tftp 0x4002000000 ${user_dir}/mustang_tianocore_spi.fd; tftp 0x1d000000 ${user_dir}/mustang_tianocore_sec_spi.fd; go 0x1d000000'
+  setenv uefi 'tftp 0x4002000000 ${user_dir}/mustang_tianocore_ubt.fd; tftp 0x1d000000 ${user_dir}/mustang_tianocore_sec_ubt.fd; go 0x1d000000'
+=== Clean and make tianocore - Magneto branch ===
+  make BOARD_NAME=mustang BUILD_ENDIAN=little -C tianocore clean
+  make -C tianocore distclean
+  make BE=0 tianocore_basetools
+  make tianocore_mustang tianocore_mustang_media tianocore_merlin tianocore_merlin_media
+
+  dtc -o apm-mustang.dtb -i . -O dtb -I dts tianocore/ArmPlatformPkg/APMXGenePkg/DeviceTree/apm-mustang.dts

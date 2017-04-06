@@ -1,0 +1,99 @@
+
+<h3 class="sectionedit1" id="how_to_compile_new_kernel_on_suse">How to compile new kernel on SUSE</h3>
+<div class="level3">
+
+<p>
+<strong>0. In Merlin board PVT keeping need update corrected the datetime</strong>
+</p>
+<pre class="code">wget http://download.opensuse.org/repositories/network:/utilities/SLE_12_SP1/aarch64/iperf-3.1.3-50.1.aarch64.rpm
+wget http://download.opensuse.org/repositories/network:/utilities/SLE_12_SP1/aarch64/libiperf0-3.1.3-50.1.aarch64.rpm
+hwclock -f /dev/rtc1
+hwclock -s -f /dev/rtc1
+date</pre>
+
+<p>
+<strong>1. Add repos</strong>
+</p>
+<pre class="code">mkdir -p /home/amcc/dvd &amp; cd /home/amcc/dvd
+scp huyle@10.38.12.20:/home/amcc/Image/suse/* /home/amcc/dvd
+zypper ar -c -t yast2 &quot;iso:/?iso=SLE-12-SP2-Server-DVD-aarch64-GM-DVD1.iso&amp;url=dir:///home/amcc/dvd&quot; &quot;suse-repos&quot;
+zypper ar -c -t yast2 &quot;iso:/?iso=SLE-12-SP2-SDK-DVD-aarch64-RC3-DVD3.iso&amp;url=nfs://10.38.12.35/tftpboot/rootfs/arm64/suse/enterprise/server/sle12_sp2/rc3&quot; &quot;SDK3&quot;
+zypper ar -c -t yast2 &quot;iso:/?iso=SLE-12-SP2-SDK-DVD-aarch64-RC3-DVD1.iso&amp;url=nfs://10.38.12.35/tftpboot/rootfs/arm64/suse/enterprise/server/sle12_sp2/rc3&quot; &quot;SDK1&quot;
+#zypper ar -c -t yast2 &quot;iso:/?iso=SLE-12-SP2-Server-DVD-aarch64-GM-DVD1.iso&amp;url=dir:///home/amcc/dvd&quot; &quot;GM&quot;</pre>
+
+<p>
+<strong>2. Need install all package</strong>
+</p>
+<pre class="code">zypper install git-core ncurses-devel gcc rpm-build libopenssl-devel \
+readline-devel hmaccalc pesign-obs-integration libelf-devel quilt</pre>
+
+<p>
+<strong>3. Git soruce SUSE</strong>
+</p>
+<pre class="code">mkdir -p /home/amcc/source &amp; cd /home/amcc/source
+#git clone git://kernel.opensuse.org/kernel-source.git
+git clone hule@vdcsw001:/hcm_software/git/opensuse/kernel-source.git
+# scp hule@10.38.12.20:/AMCC/hule/opensource/suse/kernel-source.tgz .
+# tar xf kernel-source.tgz
+cd kernel-source ############# Curent SUSE relese OS on base kernel 4.4
+git branch -a
+git checkout -b SLE12-SP2 origin/SLE12-SP2
+wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz</pre>
+
+<p>
+<strong>4. Run patches or update existing ones</strong>
+</p>
+<pre class="code">scripts/install-git-hooks
+scripts/sequence-patch.sh</pre>
+
+<p>
+<strong>5. Copy all the patch to patches.suse folder</strong>
+</p>
+<pre class="code">scp hule@10.38.12.20:/AMCC/hule/opensource/net-next/00001,2,3.patch patches.suse</pre>
+
+<p>
+<strong>6. In thhe configure into adding the patchs change</strong>
+</p>
+<pre class="code">vi series.conf
+Example:
+  patches.suse/00001.patch
+  patches.suse/00002.patch
+  patches.suse/00003.patch</pre>
+
+<p>
+<strong>7. Update the patchs into source</strong>
+</p>
+<pre class="code">cd ./tmp/current
+./refresh_patch.sh
+./run_oldconfig.sh
+cd ../..</pre>
+
+<p>
+<strong>8. Creates a source package in the kernel-source subdirectory</strong>
+</p>
+<pre class="code">./scripts/tar-up.sh
+rm -rf SOURCES
+ln -s kernel-source SOURCES</pre>
+
+<p>
+<strong>9. Recompile new kernel</strong>
+</p>
+<pre class="code">rpmbuild --define &quot;%_topdir $(pwd)&quot; --without debug --without debuginfo --without doc -ba SOURCES/kernel-default.spec</pre>
+
+<p>
+<strong>10. Install New Kernel</strong>
+</p>
+<pre class="code">cd RPMS/aarch64
+rpm -ivh kernel-default-4.4.31-0.aarch64.rpm</pre>
+
+<p>
+#####################GOODLUCK###############################
+</p>
+
+<p>
+Notes:
+- Disable or Enable a Repository
+</p>
+<pre class="code">zypper modifyrepo -d | -e &quot;namerepos&quot;</pre>
+
+</div>

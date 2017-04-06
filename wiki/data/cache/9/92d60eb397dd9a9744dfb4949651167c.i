@@ -1,0 +1,7 @@
+a:14:{i:0;a:3:{i:0;s:14:"document_start";i:1;a:0:{}i:2;i:0;}i:1;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:0;}i:2;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:22:"* Make Image - Ramdisk";}i:2;i:1;}i:3;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:23;}i:4;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:53:"  make Image
+  dd if=uRamdisk of=Ramdisk bs=64 skip=1";}i:2;i:23;}i:5;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:23;}i:6;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:69:"* Copy Image, Ramdisk-APM to /boot folder. Then modified at grub.cfg
+";}i:2;i:82;}i:7;a:3:{i:0;s:13:"internalmedia";i:1;a:7:{i:0;s:13:":10_34_52.png";i:1;s:0:"";i:2;s:6:"center";i:3;s:3:"700";i:4;N;i:5;s:5:"cache";i:6;s:7:"details";}i:2;i:151;}i:8;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:175;}i:9;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:175;}i:10;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:21:"* How to check config";}i:2;i:177;}i:11;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:198;}i:12;a:3:{i:0;s:12:"preformatted";i:1;a:1:{i:0;s:408:"[root@(none) ~]# cat /proc/config.gz | gunzip  | grep CONFIG_IPV6=y                                              
+CONFIG_IPV6=y                                                                                                
+[root@(none) ~]# cat /proc/config.gz | gunzip  | grep STP
+CONFIG_STP=y                                                                                                 
+[root@(none) ~]#";}i:2;i:198;}i:13;a:3:{i:0;s:12:"document_end";i:1;a:0:{}i:2;i:198;}}

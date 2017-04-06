@@ -1,0 +1,19 @@
+
+<p>
+Disable firewalld on centos or ubuntu		
+</p>
+<pre class="code">$ systemctl status firewalld
+$ systemctl stop firewalld
+$ systemctl disable firewalld</pre>
+
+<p>
+<span class="wrap_em ">Xenial-MiniISO</span>
+<a href="http://ports.ubuntu.com/ubuntu-ports/dists/xenial-updates/main/installer-arm64/current/images/netboot/mini.iso" class="urlextern" title="http://ports.ubuntu.com/ubuntu-ports/dists/xenial-updates/main/installer-arm64/current/images/netboot/mini.iso" rel="nofollow">http://ports.ubuntu.com/ubuntu-ports/dists/xenial-updates/main/installer-arm64/current/images/netboot/mini.iso</a>
+</p>
+
+<p>
+<span class="wrap_em ">To show up Grub menu on serial console</span>
+</p>
+<pre class="code">$ sudo vi /etc/default/grub
+uncomment GRUB_TERMINAL=console
+$ sudo update-grub</pre>

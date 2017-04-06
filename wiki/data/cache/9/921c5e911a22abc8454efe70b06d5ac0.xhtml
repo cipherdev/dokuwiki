@@ -1,0 +1,80 @@
+
+<h2 class="sectionedit1" id="textbox">Textbox</h2>
+<div class="level2">
+<div class="box round orange" style="width: 80%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' >a title</p>
+<div class='box_content' > the box contents</div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<div class="box left blue" style="width: 30%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<div class='box_content' >the box contents</div>
+<p class='box_caption' >a caption</p>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<div class="box round" style="width: 60%; background-color: rgb(255,204,204); border-color: rgb(255,102,0);">
+  <b class='xtop'><b class='xb1' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb2' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb3' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb4' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b></b>
+  <div class='xbox' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);">
+<p class='box_title' style="background-color: rgb(255,204,153);">title</p>
+<div class='box_content' style="background-color: rgb(255,153,153); border-color: rgb(255,102,0)">the box contents</div>
+<p class='box_caption' style="background-color: rgb(255,204,153);">caption</p>
+  </div>
+  <b class='xbottom'><b class='xb4' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb3' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb2' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b><b class='xb1' style="background-color: rgb(255,204,204); border-color: rgb(255,102,0);"></b></b>
+</div>
+<div class="box">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<div class='box_content' > the box contents </div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+
+</div>
+<!-- EDIT1 SECTION "Textbox" [1-229] -->
+<h3 class="sectionedit2" id="lgit">LGit</h3>
+<div class="level3">
+<pre class="code">git remote rm linux-next
+git remote add linux-next git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+git fetch linux-next
+git show 11659a1d54b670f05ff91627934aaadf376db937
+git cherry-pick 11659a1d54b670f05ff91627934aaadf376db937</pre>
+
+<p>
+– rename branch 
+</p>
+<pre class="code">git branch centos-apm-7.3-ilp32-temp origin/centos-apm-7.3-ilp32
+git push origin --set-upstream centos-apm-7.3-ilp32-temp
+git push origin :centos-apm-7.3-ilp32
+git branch -d old
+git checkout master
+git branch new
+git megre new
+git revert $commited</pre>
+<pre class="code">git rebase abc/master
+git commit --author=&quot;Yury Norov &lt;ynorov@caviumnetworks.com&gt;&quot;
+git format-patch -M -C CommitT~1..commitS &lt;path&gt;/folder
+git apply -v ../*.patch
+
+git archive --remote=10.38.12.20: | tar -x
+
+$ git push origin --delete &lt;branch_name&gt;</pre>
+
+<p>
+$ git branch -d &lt;branch_name&gt;
+</p>
+
+<p>
+make -C tianocore distclean
+make BE=0 tianocore_basetools
+tianocore_mustang_all tianocore_merlin_all \
+</p>
+<pre class="code">      tianocore_sydney_all tianocore_apps \
+      capsule_mustang capsule_merlin capsule_sydney</pre>
+
+</div>
+<!-- EDIT2 SECTION "LGit" [230-] -->

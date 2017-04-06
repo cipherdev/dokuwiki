@@ -1,0 +1,17 @@
+
+<h2 class="sectionedit1" id="build_rootfs_2016">Build Rootfs 2016</h2>
+<div class="level2">
+<hr />
+
+<p>
+Refer at link: <a href="http://www.acmesystems.it/buildroot_2016_02" class="urlextern" title="http://www.acmesystems.it/buildroot_2016_02" rel="nofollow">http://www.acmesystems.it/buildroot_2016_02</a>
+</p>
+<pre class="code">wget http://buildroot.uclibc.org/downloads/buildroot-2016.02.tar.bz2
+wget https://raw.githubusercontent.com/AcmeSystems/acmepatches/master/buildroot-2016.02.patch
+tar xf buildroot-2016.02.tar.bz2
+cd buildroot-2016.02.tar.bz2
+patch -p1 -i ../buildroot-2016.02.patch
+make menuconfig
+make</pre>
+
+</div>

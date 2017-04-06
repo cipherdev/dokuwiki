@@ -1,0 +1,7 @@
+<wrap em>AMI release</wrap>
+[[http://b2b.gigabyte.com/products/product-page.aspx?pid=5912&kw=MP30-AR11.1#bios]]
+<WRAP center round tip 60%>
+KVM
+</WRAP>
+
+  apt-get install icedtea-plugin

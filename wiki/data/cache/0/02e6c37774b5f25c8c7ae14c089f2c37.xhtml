@@ -1,0 +1,120 @@
+
+<h2 class="sectionedit1" id="setup_pxe">Setup PXE</h2>
+<div class="level2">
+<hr />
+
+</div>
+<!-- EDIT1 SECTION "Setup PXE" [1-27] -->
+<h3 class="sectionedit2" id="installer_packages">Installer Packages</h3>
+<div class="level3">
+<pre class="code">apt-get install isc-dhcp-server xinetd tftpd tftp 
+apt-get install tftpd-hpa wget git apache2 ssh</pre>
+
+</div>
+<!-- EDIT2 SECTION "Installer Packages" [28-158] -->
+<h3 class="sectionedit3" id="configure_tftp_server">Configure TFTP server</h3>
+<div class="level3">
+<pre class="code"> mkdir –p /var/lib/tftpboot
+ chmod -R 755 /var/lib/tftpboot
+ chown -R nobody /var/lib/tftpboot</pre>
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Edit file</p>
+<div class='box_content' > /etc/default/tftpd-hpa </div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code"> TFTP_USERNAME=&quot;tftp&quot; 
+ TFTP_DIRECTORY=&quot;/var/lib/tftpboot&quot;
+ TFTP_ADDRESS=&quot;0.0.0.0:69&quot;
+ TFTP_OPTIONS=&quot;--secure --create&quot;</pre>
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Created tftp file</p>
+<div class='box_content' > /etc/xinetd.d/tftp </div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code">  service tftp { 
+        protocol = udp 
+        port = 69 
+        socket_type = dgram 
+        wait = yes 
+        user = nobody 
+        server = /usr/sbin/in.tftpd 
+        server_args = /var/lib/tftpboot 
+        disable = no 
+  }</pre>
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Restart TFTP service </p>
+<div class='box_content' ></div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code">/etc/init.d/xinetd stop 
+/etc/init.d/xinetd restart</pre>
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Check if TFTP work </p>
+<div class='box_content' ></div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code">dmesg &gt; /var/lib/tftpboot/test.txt 
+tftp &lt;ip address of PC&gt; 
+tftp&gt; get test.txt Sent 11159 bytes in 0.0 seconds 
+tftp&gt; quit</pre>
+
+</div>
+<!-- EDIT3 SECTION "Configure TFTP server" [159-1098] -->
+<h3 class="sectionedit4" id="configure_for_pxe_boot_and_dhcp_server">Configure for PXE boot and DHCP server</h3>
+<div class="level3">
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Configuration file</p>
+<div class='box_content' >/etc/dhcp/dhcpd.conf</div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code">ddns-update-style none;
+option domain-name &quot;home.local&quot;;
+option domain-name-servers 10.38.12.99;
+default-lease-time 600;
+max-lease-time 7200;
+option time-offset -18000;
+authoritative;
+log-facility local7;
+allow booting;
+allow bootp;
+subnet 10.38.12.0 netmask 255.255.252.0 {
+     get-lease-hostnames on;
+     use-host-decl-names on;
+     range 10.38.12.100 10.38.12.200;
+     option routers 10.38.12.1;
+     option subnet-mask 255.255.252.0;
+     option broadcast-address 10.38.15.255;
+     #filename &quot;pxelinux.0&quot;;
+     filename &quot;ubuntu-installer/arm64/bootnetaa64.efi&quot;;
+     next-server 10.38.12.99;
+}</pre>
+<div class="box left orange" style="width: 25%; ">
+  <b class='xtop'><b class='xb1'></b><b class='xb2'></b><b class='xb3'></b><b class='xb4'></b></b>
+  <div class='xbox'>
+<p class='box_title' > Restart DHCP server</p>
+<div class='box_content' ></div>
+  </div>
+  <b class='xbottom'><b class='xb4'></b><b class='xb3'></b><b class='xb2'></b><b class='xb1'></b></b>
+</div>
+<pre class="code">service isc-dhcp-server restart
+service isc-dhcp-server status
+#service isc-dhcp-server stop
+#service isc-dhcp-server start</pre>
+
+</div>
+<!-- EDIT4 SECTION "Configure for PXE boot and DHCP server" [1099-] -->

@@ -1,0 +1,50 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1474380992;s:8:"modified";i:1483425299;}s:7:"creator";s:6:"Huy Le";s:4:"user";s:5:"huyle";s:11:"last_change";a:8:{s:4:"date";i:1483425299;s:2:"ip";s:9:"127.0.0.1";s:4:"type";s:1:"E";s:2:"id";s:7:"sidebar";s:4:"user";s:5:"huyle";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:23;}s:11:"contributor";a:1:{s:5:"huyle";s:6:"Huy Le";}s:5:"title";s:12:"Repositories";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:12:"repositories";s:5:"title";s:12:"Repositories";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:499:"Repositories
+
+	*  GIT SOURCE
+	*  SETUP PXE & TFTP
+	*  Console
+	*  Tools
+	*  Bootup Embedded Device-Tree
+
+----------
+
+Downloads
+
+	*  Mellanox
+	*  SPECint
+	*  Nvdia K40
+
+----------
+
+Nano-X
+
+	*  Introduction
+	*  Features
+	*  Comprehensive Drivers & Rich Tutorials
+	*  ADC
+	*  Camera
+
+----
+Customer Boards
+
+	*  Balvenie
+	*  Mcdivitt
+	*  Xuno
+	*  Telford
+	*  Genomax
+	*  Ozzy
+	*  Mustang
+	*  Merlin
+	*  Moadata
+	*  Mp30ar0
+	*  Skylark
+
+----------
+
+Open Source
+
+	*  Uboot
+	*  AptioV 
+	*  UEFI
+	*  Linux
+	*";}s:8:"relation";a:2:{s:10:"references";a:44:{s:10:"git_soruce";b:1;s:13:"setup_pxe_ftp";b:1;s:7:"console";b:1;s:5:"tools";b:1;s:27:"bootup_embedded_device-tree";b:1;s:8:"mellanox";b:1;s:7:"specint";b:1;s:9:"nvdia_k40";b:0;s:12:"introduction";b:1;s:8:"features";b:0;s:36:"comprehensive_drivers_rich_tutorials";b:1;s:3:"adc";b:1;s:6:"camera";b:1;s:8:"balvenie";b:1;s:8:"mcdivitt";b:0;s:4:"xuno";b:0;s:7:"telford";b:0;s:7:"genomax";b:0;s:4:"ozzy";b:1;s:7:"mustang";b:0;s:6:"merlin";b:1;s:7:"moadata";b:0;s:7:"mp30ar0";b:1;s:7:"skylark";b:0;s:5:"uboot";b:0;s:6:"aptiov";b:1;s:9:"tianocore";b:1;s:5:"linux";b:1;s:6:"ubuntu";b:1;s:6:"centos";b:1;s:6:"redhat";b:0;s:6:"fedora";b:0;s:4:"grub";b:1;s:6:"rootfs";b:1;s:5:"ilp32";b:1;s:6:"xenial";b:1;s:4:"suse";b:1;s:4:"next";b:0;s:4:"sata";b:1;s:3:"usb";b:0;s:6:"server";b:0;s:3:"gdb";b:1;s:4:"ceph";b:1;s:12:"pci-adapters";b:0;}s:10:"firstimage";s:0:"";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1474380992;s:8:"modified";i:1483425299;}s:7:"creator";s:6:"Huy Le";s:4:"user";s:5:"huyle";s:11:"last_change";a:8:{s:4:"date";i:1483425299;s:2:"ip";s:9:"127.0.0.1";s:4:"type";s:1:"E";s:2:"id";s:7:"sidebar";s:4:"user";s:5:"huyle";s:3:"sum";s:0:"";s:5:"extra";s:0:"";s:10:"sizechange";i:23;}s:11:"contributor";a:1:{s:5:"huyle";s:6:"Huy Le";}}}

@@ -1,0 +1,121 @@
+<div class="table sectionedit1"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0" colspan="3"> <code>Comprehensive Drivers &amp; Rich Tutorials</code> </th>
+	</tr>
+	<tr class="row1">
+		<th class="col0"> <code>Opensource</code> </th><th class="col1"> <code>Driver</code> </th><th class="col2"> <code>Source Code Files</code> </th>
+	</tr>
+	</thead>
+	<tr class="row2">
+		<td class="col0" rowspan="2"> <code> Uboot </code> </td><td class="col1"> Define configfile </td><td class="col2"> include/configs/s5p6818_nanopi3.h </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> Chip s5p6818 </td><td class="col1"> board/s5p6818/nanopi3 </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0" rowspan="33"> <code>Linux</code> </td><td class="col1"> Watchdog </td><td class="col2"> drivers/wathdog/nxp_wdt.c </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">RTC </td><td class="col1"> drivers/rtc/rtc-nxp.c </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"> Support EXT4/NFS/FAT32 </td><td class="col1"></td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"> LED </td><td class="col1"> drivers/leds/leds-gpio.c, leds-pwm.c </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0"> User Key </td><td class="col1"> drivers/input/keyboard/nxp_io_key.c </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0 leftalign"> SPI	</td><td class="col1"> drivers/spi-pl022.c </td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 leftalign"> I2C	</td><td class="col1"> drivers/i2c/busses/i2c-nxp.c </td>
+	</tr>
+	<tr class="row11">
+		<td class="col0 leftalign"> PWM	</td><td class="col1"> arch/arm/mach-s5p4418/pwm.c </td>
+	</tr>
+	<tr class="row12">
+		<td class="col0 leftalign"> ADC	</td><td class="col1"> drivers/staging/iio/adc/nxp_adc.c </td>
+	</tr>
+	<tr class="row13">
+		<td class="col0"> Capacitive touch/Resistive touch </td><td class="col1"> drivers/input/touchscreen/ft5x0x_ts.c, it7260_mts.c </td>
+	</tr>
+	<tr class="row14">
+		<td class="col0 leftalign"> FriendlyARM One-wire driver	</td><td class="col1" rowspan="2"> drivers/input/touchscreen/1wire_houst.c, ts-if.c </td>
+	</tr>
+	<tr class="row15">
+		<td class="col0"> LCD backlight, suppor 127 backlight levels </td>
+	</tr>
+	<tr class="row16">
+		<td class="col0"> USB Host: support USB drive, USB Hub, USB keyboard and USB mouse </td><td class="col1"> drivers/usb/host/ehci-synop.c </td>
+	</tr>
+	<tr class="row17">
+		<td class="col0 leftalign"> USB Device: support USB ADB	</td><td class="col1"> drivers/usb/host/dwc_otg </td>
+	</tr>
+	<tr class="row18">
+		<td class="col0 leftalign"> SD/MMC	</td><td class="col1"> drivers/mmc/host/dw_mmc*.c </td>
+	</tr>
+	<tr class="row19">
+		<td class="col0 leftalign"> Serial	</td><td class="col1"> drivers/tty/serial/amba-pl011.c </td>
+	</tr>
+	<tr class="row20">
+		<td class="col0"> Audio (audio recording and playing, ALSA compatible) </td><td class="col1"> sound/soc/codecs/snd-soc-es8316.c, sound/soc/nexell </td>
+	</tr>
+	<tr class="row21">
+		<td class="col0"> Gbit Ethernet (RTL8211E) </td><td class="col1"> drivers/net/ethernet/nexell, drivers/net/phy/realtek.c </td>
+	</tr>
+	<tr class="row22">
+		<td class="col0"> WiFi (ap6212) </td><td class="col1"> drivers/wireless/bcm4336 arch/arm/plat-s5p4418/nanopi2/wifi_pm.c </td>
+	</tr>
+	<tr class="row23">
+		<td class="col0"> Bluetooth </td><td class="col1"> drivers/Bluetooth arch/arm/plat-s5p4418/nanopi2/bt_bcm.c </td>
+	</tr>
+	<tr class="row24">
+		<td class="col0 leftalign"> Power Management（AXP228）	</td><td class="col1"> drivers/power/axp_power </td>
+	</tr>
+	<tr class="row25">
+		<td class="col0"> HDMI </td><td class="col1"> arch/arm/mach-s5p4418/prototype/module arch/arm/mach-s5p4418/soc drivers/media/video/nexell </td>
+	</tr>
+	<tr class="row26">
+		<td class="col0"> DVP Camera（OV5640） </td><td class="col1"> drivers/media/video/ov5640.c </td>
+	</tr>
+	<tr class="row27">
+		<td class="col0 leftalign"> Lvds（origianl kernel module, we didn’t test it）	</td><td class="col1"> arch/arm/mach-s5p4418/prototype/module arch/arm/mach-s5p4418/soc </td>
+	</tr>
+	<tr class="row28">
+		<td class="col0"> Multimedia 2D/3D (only for Android) </td><td class="col1"> ANDROID/hardware/samsung_slsi/slsiap/modules/vr </td>
+	</tr>
+	<tr class="row29">
+		<td class="col0"> Video encoding &amp;decoding </td><td class="col1"> ANDROID/vendor/nexell/s5p4418/modules/coda960 </td>
+	</tr>
+	<tr class="row30">
+		<td class="col0 leftalign"> Framebuffer	</td><td class="col1"> drivers/video/nxp-fb*.c arch/arm/mach-s5p4418/soc </td>
+	</tr>
+	<tr class="row31">
+		<td class="col0"> Ultra-sonic	d</td><td class="col1"> rivers/char/matrix_hcsr04.c </td>
+	</tr>
+	<tr class="row32">
+		<td class="col0 leftalign"> IR receiver	</td><td class="col1"> drivers/char/matrix_ir_recv.c </td>
+	</tr>
+	<tr class="row33">
+		<td class="col0 leftalign"> Rotary encoder	</td><td class="col1"> drivers/char/matrix_rotary_encoder.c </td>
+	</tr>
+	<tr class="row34">
+		<td class="col0 leftalign"> ADS7846	</td><td class="col1"> drivers/char/matrix_ads7846.c </td>
+	</tr>
+	<tr class="row35">
+		<td class="col0"> USB keyboard &amp; mouse </td><td class="col1"> drivers/hid </td>
+	</tr>
+	<tr class="row36">
+		<td class="col0"> USB camera </td><td class="col1"> drivers/media/video/uvc drivers/media/video/gspca </td>
+	</tr>
+</table></div>
+<!-- EDIT1 TABLE [1-2486] --><hr />
+<hr />
+
+<p>
+Note: Sử dụng âm thanh để ra lệnh cho PC xử lí.
+</p>

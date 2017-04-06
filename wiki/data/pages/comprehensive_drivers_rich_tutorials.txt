@@ -1,0 +1,45 @@
+^ ''Comprehensive Drivers & Rich Tutorials'' ^^^
+^ ''Opensource'' ^ ''Driver'' ^ ''Source Code Files'' |
+| '' Uboot '' | Define configfile | include/configs/s5p6818_nanopi3.h |
+| ::: | Chip s5p6818 | board/s5p6818/nanopi3 |
+| ''Linux'' | Watchdog | drivers/wathdog/nxp_wdt.c |
+| ::: |RTC | drivers/rtc/rtc-nxp.c |
+| ::: | Support EXT4/NFS/FAT32 |
+| ::: | LED | drivers/leds/leds-gpio.c, leds-pwm.c |
+| ::: | User Key | drivers/input/keyboard/nxp_io_key.c |
+| ::: | SPI	| drivers/spi-pl022.c |
+| ::: | I2C	| drivers/i2c/busses/i2c-nxp.c |
+| ::: | PWM	| arch/arm/mach-s5p4418/pwm.c |
+| ::: | ADC	| drivers/staging/iio/adc/nxp_adc.c |
+| ::: | Capacitive touch/Resistive touch | drivers/input/touchscreen/ft5x0x_ts.c, it7260_mts.c |
+| ::: | FriendlyARM One-wire driver	| drivers/input/touchscreen/1wire_houst.c, ts-if.c |
+| ::: | LCD backlight, suppor 127 backlight levels | ::: |
+| ::: | USB Host: support USB drive, USB Hub, USB keyboard and USB mouse | drivers/usb/host/ehci-synop.c |
+| ::: | USB Device: support USB ADB	| drivers/usb/host/dwc_otg |
+| ::: | SD/MMC	| drivers/mmc/host/dw_mmc*.c |
+| ::: | Serial	| drivers/tty/serial/amba-pl011.c |
+| ::: | Audio (audio recording and playing, ALSA compatible) | sound/soc/codecs/snd-soc-es8316.c, sound/soc/nexell |
+| ::: | Gbit Ethernet (RTL8211E) | drivers/net/ethernet/nexell, drivers/net/phy/realtek.c |
+| ::: | WiFi (ap6212) | drivers/wireless/bcm4336 arch/arm/plat-s5p4418/nanopi2/wifi_pm.c |
+| ::: | Bluetooth | drivers/Bluetooth arch/arm/plat-s5p4418/nanopi2/bt_bcm.c |
+| ::: | Power Management（AXP228）	| drivers/power/axp_power |
+| ::: | HDMI | arch/arm/mach-s5p4418/prototype/module arch/arm/mach-s5p4418/soc drivers/media/video/nexell |
+| ::: | DVP Camera（OV5640） | drivers/media/video/ov5640.c |
+| ::: | Lvds（origianl kernel module, we didn’t test it）	| arch/arm/mach-s5p4418/prototype/module arch/arm/mach-s5p4418/soc |
+| ::: | Multimedia 2D/3D (only for Android) | ANDROID/hardware/samsung_slsi/slsiap/modules/vr |
+| ::: | Video encoding &decoding | ANDROID/vendor/nexell/s5p4418/modules/coda960 |
+| ::: | Framebuffer	| drivers/video/nxp-fb*.c arch/arm/mach-s5p4418/soc |
+| ::: | Ultra-sonic	d| rivers/char/matrix_hcsr04.c |
+| ::: | IR receiver	| drivers/char/matrix_ir_recv.c |
+| ::: | Rotary encoder	| drivers/char/matrix_rotary_encoder.c |
+| ::: | ADS7846	| drivers/char/matrix_ads7846.c |
+| ::: | USB keyboard & mouse | drivers/hid |
+| ::: | USB camera | drivers/media/video/uvc drivers/media/video/gspca |
+
+
+
+----
+
+----
+
+Note: Sử dụng âm thanh để ra lệnh cho PC xử lí.

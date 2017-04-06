@@ -1,0 +1,8 @@
+<pre class="code">ipmitool -I lanplus -H 10.38.13.209 -U root -P superuser power on
+a) Set SOL baudrate:
+$ ipmitool -I lanplus -H 10.38.13.209 -U root -P superuser sol set volatile-bit-rate 115.2
+$ ipmitool -I lanplus -H 10.38.13.209 -U root -P superuser sol set non-volatile-bit-rate 115.2 
+b) Get SOL information:
+$ ipmitool -I lanplus -H 10.38.13.209 -U root -P superuser sol info
+c) Activate SOL:
+$ ipmitool -I lanplus -H 10.38.13.209 -U root -P superuser sol activate</pre>

@@ -1,0 +1,78 @@
+===== Nano-PC=====
+Refer: [[http://wiki.friendlyarm.com/wiki/index.php/NanoPC-T3]]
+----
+==== Specifications ====
+
+  * SoC: Samsung S5P6818 Octa-Core Cortex-A53, 400M Hz - 1.4G Hz
+  * Power Management Unit: AXP228 PMU, it supports software power-off and wake-up.
+  * System Memory: 1GB/2GB 32bit DDR3 RAM
+  * Storage: 1 x SD Card Socket
+  * Ethernet: Gbit Ethernet(RTL8211E)
+  * WiFi: 802.11b/g/n
+  * Bluetooth: 4.0 dual mode
+  * Antenna: Porcelain Antenna IPX Interface
+  * eMMC: 8GB {{ :11_23_12.png?400|}}
+  * Video Input: DVP Camera/MIPI-CSI (two camera interfaces)
+  * Video Output: HDMI Type-A / LVDS / Parallel RGB-LCD / MIPI-DSI (four video output interfaces)
+  * Audio: 3.5 mm audio jack / via HDMI
+  * Microphone: onboard Microphone
+  * USB Host: 4 x USB 2.0 Host, two type A ports and two 2.54 mm pitch pin-headers
+  * MicroUSB: 1 x MicroUSB 2.0 Client, Type A
+  * LCD Interface: 0.5mm pitch 45 pin FPC seat, full color RGB 8-8-8
+  * HDMI: 1.4A Type A, 1080P
+  * DVP Camera: 0.5mm pitch 24 pin FPC seat
+  * GPIO: 2.54 mm pitch 30 pin-header
+  * Serial Debug Port: 2.54mm pitch 4-pin-header
+  * User Key: K1 (power), Reset
+  * LED: 1 x power LED and 2 x GPIO LED
+  * Other Resources: CPU’s internal TMU
+  * RTC Battery: RTC Battery Seat
+  * Heat Sink: 1 x Heat Sink with mounting holes
+  * Power: DC 5V/2A
+  * PCB: Six Layer
+  * Dimension: 100 mm x 60 mm
+  * OS/Software: uboot, Android and Debian
+
+==== Install Cross Compiler ====
+  * Download the compiler package:
+
+	git clone https://github.com/friendlyarm/prebuilts.git
+	sudo mkdir -p ./toolchain
+	sudo tar xf prebuilts/gcc-x64/arm-cortexa9-linux-gnueabihf-4.9.3.tar.xz -C ./toolchain/
+
+  * Then add the compiler's directory to "PATH" by appending the following lines in "~/.bashrc":
+
+	export PATH=/opt/FriendlyARM/toolchain/4.9.3/bin:$PATH
+	export GCC_COLORS=auto
+
+  * Execute "~/.bashrc" to make the changes take effect. Note that there is a space after the first ".":
+
+	. ~/.bashrc
+
+  * This compiler is a 64-bit one therefore it cannot be run on a 32-bit Linux machine. After the compiler is installed you can verify it by running the following commands:
+
+	arm-linux-gcc -v
+	Using built-in specs.
+	COLLECT_GCC=arm-linux-gcc
+	COLLECT_LTO_WRAPPER=/opt/FriendlyARM/toolchain/4.9.3/libexec/gcc/arm-cortexa9-linux-gnueabihf/4.9.3/lto-wrapper
+	Target: arm-cortexa9-linux-gnueabihf
+	Configured with: /work/toolchain/build/src/gcc-4.9.3/configure --build=x86_64-build_pc-linux-gnu
+	--host=x86_64-build_pc-linux-gnu --target=arm-cortexa9-linux-gnueabihf --prefix=/opt/FriendlyARM/toolchain/4.9.3
+	--with-sysroot=/opt/FriendlyARM/toolchain/4.9.3/arm-cortexa9-linux-gnueabihf/sys-root --enable-languages=c,c++
+	--with-arch=armv7-a --with-tune=cortex-a9 --with-fpu=vfpv3 --with-float=hard
+	...
+	Thread model: posix
+
+	gcc version 4.9.3 (ctng-1.21.0-229g-FA)
+----
+
+	#define FASTBOOT_PARTS_DEFAULT          \
+		"2ndboot:2nd:0x200,0x7A00;"     \
+		"bootloader:boot:0x8000,0x70000;"       \
+		"boot:ext4:0x00100000,0x04000000;"              \
+		"system:ext4:0x04100000,0x02F200000;"   \
+		"cache:ext4:0x33300000,0x1AC00000;"             \
+		"misc:emmc:0x4E000000,0x00800000;"              \
+		"recovery:emmc:0x4E900000,0x01600000;"  \
+		"userdata:ext4:0x50000000,0x0;"
+	#endif

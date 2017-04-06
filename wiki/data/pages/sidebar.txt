@@ -1,0 +1,68 @@
+==== Repositories ====
+  * [[git soruce|GIT SOURCE]]
+  * [[setup pxe & ftp|SETUP PXE & TFTP]]
+  * [[console|Console]]
+  * [[tools|Tools]]
+  * [[Bootup Embedded Device-Tree]]
+
+----
+
+**Downloads**
+  * [[mellanox|Mellanox]]
+  * [[specint|SPECint]]
+  * [[nvdia K40|Nvdia K40]]
+
+----
+**Nano-X**
+  * [[Introduction]]
+  * [[Features]]
+  * [[Comprehensive Drivers & Rich Tutorials]]
+  * [[adc|ADC]]
+  * [[camera|Camera]]
+----
+**Customer Boards**
+  * [[balvenie|Balvenie]]
+  * [[mcdivitt|Mcdivitt]]
+  * [[xuno|Xuno]]
+  * [[telford|Telford]]
+  * [[genomax|Genomax]]
+  * [[ozzy|Ozzy]]
+  * [[mustang|Mustang]]
+  * [[merlin|Merlin]]
+  * [[moadata|Moadata]]
+  * [[mp30ar0|Mp30ar0]]
+  * [[skylark|Skylark]]
+
+----
+
+**Open Source**
+  * [[uboot|Uboot]]
+  * [[AptioV|AptioV ]]
+  * [[tianocore|UEFI]]
+  * [[linux|Linux]]
+  * [[ubuntu|Ubuntu]]
+  * [[centos|CentOS]]
+  * [[redhat|Redhat]]
+  * [[fedora|Fedora]]
+  * [[grub|Grub]]
+  * [[rootfs|Rootfs]]
+  * [[ilp32|ILP32]]
+----
+
+**Testing**
+  * [[xenial|Xenial]]
+  * [[suse|Suse]]
+  * [[next..]]
+----
+**Knows**
+  * [[sata|Sata]]
+  * [[usb|Usb]]
+  * [[server|Server]]
+  * [[gdb | GDB]]
+  * [[ceph | CEPH]]
+
+**Hardware**
+  * [[pci-adapters|PCI adapters]]
+
+----
+

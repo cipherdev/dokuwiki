@@ -1,0 +1,12 @@
+* Make Image - Ramdisk
+    make Image
+    dd if=uRamdisk of=Ramdisk bs=64 skip=1
+* Copy Image, Ramdisk-APM to /boot folder. Then modified at grub.cfg
+{{ :10_34_52.png?700 |}}
+
+* How to check config
+  [root@(none) ~]# cat /proc/config.gz | gunzip  | grep CONFIG_IPV6=y                                              
+  CONFIG_IPV6=y                                                                                                
+  [root@(none) ~]# cat /proc/config.gz | gunzip  | grep STP
+  CONFIG_STP=y                                                                                                 
+  [root@(none) ~]#

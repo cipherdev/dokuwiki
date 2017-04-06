@@ -1,0 +1,5 @@
+==== Debuging ====
+	echo -e '\e[40;32m'"\033[1mnextshell.com \033[0m"
+	printf("\033[31;43m --default no chose key.. \033[0m\n");
+	make M=drivers/media/i2c modules
+	make M=drivers/media/usb/smi2021 modules

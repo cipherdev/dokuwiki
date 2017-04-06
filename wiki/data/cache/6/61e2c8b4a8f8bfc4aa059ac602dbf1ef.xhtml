@@ -1,0 +1,36 @@
+
+<h2 class="sectionedit1" id="merlin">Merlin</h2>
+<div class="level2">
+<hr />
+
+</div>
+<!-- EDIT1 SECTION "Merlin" [1-24] -->
+<h3 class="sectionedit2" id="bmc">BMC</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Old BMC: sysadmin/superuser</div>
+</li>
+<li class="level1"><div class="li"> ipmiutil discover</div>
+</li>
+<li class="level1"><div class="li"> New BMC: ADMIn/ADMIN - root/root</div>
+</li>
+<li class="level1"><div class="li"> ipmitool -H &lt;IP-BMC&gt; -U ADMIN -P ADMIN -I lanplus chassis power reset</div>
+</li>
+<li class="level1"><div class="li"> ipmitool -H &lt;IP-BMC&gt; -U ADMIN -P ADMIN -I lanplus sol deactivate  «&lt; exit console</div>
+</li>
+<li class="level1"><div class="li"> ipmitool -H &lt;IP-BMC&gt; -U ADMIN -P ADMIN -I lanplus sol activate    «&lt; connected to console serial</div>
+</li>
+<li class="level1"><div class="li"> ipmitool -H &lt;IP-BMC&gt; -U ADMIN -P ADMIN -I lanplus chassis power off</div>
+</li>
+<li class="level1"><div class="li"> ipmitool -H &lt;IP-BMC&gt; -U ADMIN -P ADMIN -I lanplus chassis power on</div>
+</li>
+<li class="level1"><div class="li"> </div>
+</li>
+</ul>
+
+<p>
+Merlin PVT IP: 10.38.15.226
+</p>
+
+</div>
+<!-- EDIT2 SECTION "BMC" [25-] -->

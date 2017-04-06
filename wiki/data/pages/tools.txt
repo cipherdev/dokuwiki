@@ -1,0 +1,36 @@
+==== Autologin on Ubuntu ====
+  ssh-keygen
+  ssh-copy-id -i root@ip_address
+  ssh -Y root@ip_address
+<WRAP center round tip 60%>
+DTC tools
+</WRAP>
+  sudo apt-get install device-tree-compiler
+  dtc -I fs /sys/firmware/devicetree/base
+<WRAP center round help 60%>
+Builds
+</WRAP>
+git clone <source>
+  make defconfig
+->make menuconfig
+->copy config from </boot/config> ./.config
+make Image -j4
+-> ./arch/arm64/boot/Image
+  ./scripts/dtc/dtc -O dtb -R 16 -o ./arch/arm64/boot/apm-merlin.dtb ./arch/arm64/boot/dts/apm/apm-merlin.dts
+  mkimage -A arm -O linux -C none -T kernel -a 0x00080000 -e 0x00080000 -n "Linux-LE" -d ./arch/arm64/boot/Image ./arch/arm64/boot/uImage
+  
+<wrap em>resize</wrap>
+  apt-get install cloud-utils
+  growpart /dev/sda 2
+  resize2fs /dev/sda2
+
+<wrap em>Upgrade Kernel Ubuntu</wrap>
+  You could always do the following:
+  apt-cache search linux-image
+  Pick the one you want and then do:
+  sudo apt-get install linux-image-your_version_choice
+  
+  
+sudo apt-get purge --auto-remove package
+
+dtc -o apm-mustang.dtb -i . -O dtb -I dts tianocore/ArmPlatformPkg/APMXGenePkg/DeviceTree/apm-mustang.dts

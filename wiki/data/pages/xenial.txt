@@ -1,0 +1,58 @@
+    
+  #!/bin/bash
+  irqpid=`pidof irqbalance`
+  echo "kill -9 ${irqpid}"
+  kill -9 ${irqpid}
+  echo "pidof irqbalance"
+  pidof irqbalance
+  echo ff > /sys/class/net/eth1/queues/rx-0/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-1/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-2/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-3/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-4/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-5/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-6/rps_cpus
+  echo ff > /sys/class/net/eth1/queues/rx-7/rps_cpus
+  echo "cat /sys/class/net/eth1/queues/rx-?/rps_cpus"
+  cat /sys/class/net/eth1/queues/rx-?/rps_cpus
+
+
+^  Tools                   ^  PVT Board & 3.06.21 Release &\\ Ubuntu 161011+apm                                     |^  DVT board & AMI BIOS &\\ Ubuntu 161011+apm                                                       ||
+| :::                      ^  TX rate (Gbit/sec)                                 ^  RX rate (Gbit/sec)               ^  TX rate (Gbit/sec)                          ^  RX rate (Gbit/sec)                                 ^
+^ Iperf tool                                                                                                                                                                                                          |||||
+| 1 Thread                 | 9.48                                                | 8.24                              | 9.48                                         | (6.88 - 9.41)                                       |
+| 4 Threads                | 9.48                                                | 9.48                              | 9.48                                         | (9.39 - 9.48)                                       |
+| 8 Threads                | 9.48                                                | 9.48                              | 9.48                                         | 9.48                                                |
+^ Iperf3 tool                                                                                                                                                                                                         |||||
+| 1 Thread                 | 9.48                                                | 8.62                              | 9.48                                         | 9.12                                                |
+| 4 Threads                | 9.48                                                | 6.95                              | 9.48                                         | 8.84                                                |
+| 8 Threads                | 9.48                                                | 8.15                              | 9.48                                         | 8.18                                                |
+^ Iperf tool                                                                                                                                                                                                          |||||
+| 1 Thread                 | irqs on: 9.48 \\ irqs off: 9.48                     | irqb on:  8.50\\ irqb off: 8.21   | irqb on:  9.48\\ irqb off: 9.48              | irqb on:  (8.53 - 9.41)\\ irqb off: 8.58            |
+| 4 Threads                | irqb on: 9.48\\ irqb off: 9.48                      | irqb on:  9.48\\ irqb off: 9.48   | irqb on:  9.48\\ irqb off: 9.48              | irqb on:  9.48\\ irqb off: 9.47                     |
+| 8 Threads                | irqb on: 9.48\\ irqb off: 9.48                      | irqb on: 9.48 \\ irqb off: 9.48   | irqb on:  9.48\\ irqb off: 9.48              | irqb on:  9.48\\ irqb off: 9.48                     |
+^ Iperf3 tool                                                                                                                                                                                                         |||||
+| 1 Thread                 | irqb on: 9.48\\ irqb off: 9.48                      | irqs on:  8.36\\ irqs off: 8.05   | irqb on: 9.48  \\ irqb off: 9.48             | irqb on:  (8.41 - 9.19)\\ irqb off: 9.19            |
+| 4 Threads                | irqb on: 9.48\\ irqb off: 9.48                      | irqb on:  7.92\\ irqb off: 9.20   | irqb on:  9.48\\ irqb off: 9.48              | irqb on:  (7.87 - 9.19) \\ irqb off: (7.89 - 9.32)  |
+| 8 Threads                | irqb on: 9.48\\ irqb off: 9.48                      | irqb on:  9.10\\ irqb off:  9.45  | irqb on:  9.48\\ irqb off: 9.48              | irqb on:  (7.89 - 9.20)\\ irqb off: (7.98 - 8.39)   |
+^                                                                                                                                                                                                                     ^^^^^
+|                          ^  PVT Board & 3.06.22 Release &\\ Linux Net-Next                                        ^^  DVT board & AMI BIOS &\\ Ubuntu 161011+apm                                                       ^^
+|                          | TX rate (Gbit/sec)                                  | RX rate (Gbit/sec)                | TX rate (Gbit/sec)                           | RX rate (Gbit/sec)                                  |
+^ Iperf tool                                                                                                                                                                                                          ^^^^^
+| 1 Thread                 |                                                     |                                   |                                              |                                                     |
+| 4 Threads                |                                                     |                                   |                                              |                                                     |
+| 8 Threads                |                                                     |                                   |                                              |                                                     |
+^ Iperf3 tool                                                                                                                                                                                                         ^^^^^
+| 1 Thread                 |                                                     |                                   |                                              |                                                     |
+| 4 Threads                |                                                     |                                   |                                              |                                                     |
+| 8 Threads                |                                                     |                                   |                                              |                                                     |
+^ Iperf tool + Optimize1                                                                                                                                                                                              ^^^^^
+| 1 Thread                 |                                                     |                                   |                                              |                                                     |
+| 4 Threads                |                                                     |                                   |                                              |                                                     |
+| 8 Threads                |                                                     |                                   |                                              |                                                     |
+^ Iperf3 tool + Optimize1                                                                                                                                                                                             ^^^^^
+| 1 Thread                 |                                                     |                                   |                                              |                                                     |
+| 4 Threads                |                                                     |                                   |                                              |                                                     |
+| 8 Threads                |                                                     |                                   |                                              |                                                     |
+|                          |                                                     |                                   |                                              |                                                     |
+|                          |                                                     |                                   |                                              |                                                     |

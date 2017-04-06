@@ -1,0 +1,17 @@
+===== Merlin =====
+----
+==== BMC ====
+  * Old BMC: sysadmin/superuser
+  * ipmiutil discover
+  * New BMC: ADMIn/ADMIN - root/root
+  * ipmitool -H <IP-BMC> -U ADMIN -P ADMIN -I lanplus chassis power reset
+  * ipmitool -H <IP-BMC> -U ADMIN -P ADMIN -I lanplus sol deactivate  <<< exit console
+  * ipmitool -H <IP-BMC> -U ADMIN -P ADMIN -I lanplus sol activate    <<< connected to console serial
+  * ipmitool -H <IP-BMC> -U ADMIN -P ADMIN -I lanplus chassis power off
+  * ipmitool -H <IP-BMC> -U ADMIN -P ADMIN -I lanplus chassis power on
+  * 
+Merlin PVT IP: 10.38.15.226
+
+
+
+

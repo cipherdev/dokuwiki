@@ -1,0 +1,71 @@
+Disable firewalld on centos or ubuntu		
+	$ systemctl status firewalld
+	$ systemctl stop firewalld
+	$ systemctl disable firewalld
+<wrap em>Xenial-MiniISO</wrap>
+[[http://ports.ubuntu.com/ubuntu-ports/dists/xenial-updates/main/installer-arm64/current/images/netboot/mini.iso]]
+
+<wrap em>To show up Grub menu on serial console</wrap>
+
+  $ sudo vi /etc/default/grub
+  uncomment GRUB_TERMINAL=console
+  $ sudo update-grub
+
+
+----
+==== Cross compile ====
+
+	#make ARCH=arm64 defconfig
+	#make ARCH=arm64 menuconfig
+	$ setenv CROSS_COMPILER_PATH '/tools/arm/armv8/Theobroma/opt/apm-aarch64/8.0.10-le/bin'
+	$ setenv PATH "${CROSS_COMPILER_PATH}:${PATH}"
+	$ make ARCH=arm64 CROSS_COMPILE=aarch64-apm-linux-gnu- Image -j16
+	$ make ARCH=arm64 CROSS_COMPILE=aarch64-apm-linux-gnu- modules
+	$ make modules_install INSTALL_MOD_PATH=/AMCC/hule/p4/os/ubuntu/ubuntu-wily/_install
+	$ ./scripts/dtc/dtc -O dtb -R 16 -o ./arch/arm64/boot/apm-mustang.dtb ./arch/arm64/boot/dts/apm/apm-mustang.dts
+	$ ./scripts/dtc/dtc -O dtb -R 16 -o apm-merlin.dtb ./arch/arm64/boot/dts/apm/apm-merlin.dts
+	$ ./scripts/dtc/dtc -O dtb -R 16 -o apm-ozzy-wily.dtb ./arch/arm64/boot/dts/apm/apm-mustang.dts
+	$ /AMCC/hule/working/xuno/uboot_build/tools/mkimage -A arm -O linux -C none -T kernel -a 0x00080000 -e 0x00080000 -n "Linux-LE" -d ./arch/arm64/boot/Image ./arch/arm64/boot/uImage
+	#(note: mkimage : uboot_build_mustang/tools/mkimage)
+==== Run wily on Uboot ====
+
+	setenv wily 'setenv sata 0x3c;setenv sataargs 'setenv bootargs root=/dev/sda3 rw';scsi init;ext4load scsi 0 ${kern_addr_r} uImage;ext4load scsi 0 ${ramdisk_addr_r} uInitrd;ext4load scsi 0 ${fdt_addr_r} apm-mustang.dtb;run sataargs;bootm ${kern_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}'
+	setenv trusty 'setenv sata 0x3c;setenv sataargs 'setenv bootargs root=/dev/sda3 rw';scsi init;ext4load scsi 0 ${kern_addr_r} uImage;ext4load scsi 0 ${ramdisk_addr_r} uInitrd;ext4load scsi 0 ${fdt_addr_r} apm-mustang.dtb;run sataargs;bootm ${kern_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}'
+	setenv wily 'setenv sata 0x3c;setenv sataargs 'setenv bootargs root=UUID=92b2977a-f4d4-4130-aa6d-4f17c31f951c rw';scsi init;ext4load scsi 0 ${kern_addr_r} uImage;ext4load scsi 0 ${ramdisk_addr_r} uInitrd;ext4load scsi 0 ${fdt_addr_r} apm-mustang.dtb;run sataargs;bootm ${kern_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}'
+	
+	setenv wily 'setenv sata 0x3c;setenv sataargs 'setenv bootargs root=/dev/sda3 rw';scsi init;ext4load scsi 0 ${kern_addr_r} uImage;ext4load scsi 0 ${ramdisk_addr_r} uInitrd;ext4load scsi 0 ${fdt_addr_r} apm-ozzy-wily.dtb;run sataargs;bootm ${kern_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}'
+	
+==== Link get source ====
+
+	# Wily 15.10: http://kernel.ubuntu.com/git/ubuntu/ubuntu-wily.git
+	
+==== Update packages ====
+
+	$ sudo apt-get update
+	$ sudo apt-get dist-upgrade
+	$ sudo apt-get install build-essential dpkg-dev git ncurses-dev wget git \
+          kernel-wedge bc openssl* libssl-dev uboot-mkimage
+	$ sudo apt-get build-dep linux-image-$(uname -r)
+==== Buiding source on board ====
+
+	$ cd ubuntu-wily/
+	$ sudo ./debian/rules clean
+	$ sudo ./debian/rules skipabi=true skipmodule=true binary-headers binary-generic
+  $ sudo DEB_BUILD_OPTIONS=parallel=8 fakeroot ./debian/rules skipmodule=true binary-headers binary-generic
+  
+  ///hcm_software/ftproot/apmsw/ubuntu/xenial/patches all patch APM
+==== Disable firewalld on centos or ubuntu ====
+		
+	$ systemctl status firewalld
+	$ systemctl stop firewalld
+	$ systemctl disable firewalld
+	
+	$ mpstat -P ALL -u 4
+	$ watch cat /proc/interrupts  | grep <>
+        $ sudo dpkg -i --force-all *.deb
+        
+        Xenial:
+        setenv sata 0x3c;setenv sataargs 'setenv bootargs root=/dev/sda3 rw'
+        setenv loadu 'scsi init;ext4load scsi 0 ${kern_addr_r} uImage;ext4load scsi 0 ${ramdisk_addr_r} uInitrd;ext4load scsi 0 ${fdt_addr_r} apm-mustang.dtb'
+        setenv os 'run sataargs;bootm ${kern_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}'
+        setenv xenial 'run loadu; run os'

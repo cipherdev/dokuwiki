@@ -1,0 +1,62 @@
+
+<h1 class="sectionedit1" id="update">Update</h1>
+<div class="level1">
+
+<p>
+Download Mellanox Driver 3.0-1.0.1 for aarch64 at:
+</p>
+<!-- EDIT2 PLUGIN_WRAP_START [0-] --><div class="wrap_center wrap_round wrap_download plugin_wrap" style="width: 100%;">
+<p>
+<a href="http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers" class="urlextern" title="http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers" rel="nofollow">http://www.mellanox.com/page/products_dyn?product_family=26&amp;mtag=linux_sw_drivers</a>
+</p>
+</div><!-- EDIT3 PLUGIN_WRAP_END [0-] -->
+<p>
+<a href="/wiki/lib/exe/detail.php?id=mellanox&amp;media=09_22_14.png" class="media" title="09_22_14.png"><img src="/wiki/lib/exe/fetch.php?w=700&amp;tok=70fcfb&amp;media=09_22_14.png" class="mediacenter" alt="" width="700" /></a>
+</p>
+<pre class="code">#wget ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/apm-xgene-centos71-rpms.tar.xz
+#wget ftp://amccsw:special4u@ftp.amcc.com/outbound/storm/centos/apm_centos_7.2_storm_160507.2.tar.xz
+#rpm -i --force --nodeps *.rpm 
+#reboot
+tar -xvf MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64.tgz
+cd MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64
+./mlnx_add_kernel_support.sh  --mlnx_ofed ./ --make-tgz -y –v
+If Done Created /tmp/MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz 
+mkdir temp
+cp –rf /tmp/MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz temp
+cd temp &amp;&amp; tar xvf MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext.tgz
+cd MLNX_OFED_LINUX-3.0-1.0.1-rhel7.1-aarch64-ext 
+./mlnxofedinstall --all
+reboot</pre>
+
+<p>
+For more detail, refer at:
+</p>
+<!-- EDIT4 PLUGIN_WRAP_START [0-] --><div class="wrap_center wrap_round wrap_info plugin_wrap" style="width: 100%;">
+<p>
+<a href="http://www.mellanox.com/related-docs/prod_software/Mellanox_OFED_Linux_User_Manual_v3.0-1.0.1.pdf" class="urlextern" title="http://www.mellanox.com/related-docs/prod_software/Mellanox_OFED_Linux_User_Manual_v3.0-1.0.1.pdf" rel="nofollow">http://www.mellanox.com/related-docs/prod_software/Mellanox_OFED_Linux_User_Manual_v3.0-1.0.1.pdf</a>
+<a href="http://www.mellanox.com/related-docs/user_manuals/Connect-IB_Single_and_Dual_QSFP+_Port_PCI_Express_Gen3_%20x16_Adapter_Card_User_Manual.pdf" class="urlextern" title="http://www.mellanox.com/related-docs/user_manuals/Connect-IB_Single_and_Dual_QSFP+_Port_PCI_Express_Gen3_%20x16_Adapter_Card_User_Manual.pdf" rel="nofollow">http://www.mellanox.com/related-docs/user_manuals/Connect-IB_Single_and_Dual_QSFP+_Port_PCI_Express_Gen3_%20x16_Adapter_Card_User_Manual.pdf</a>
+</p>
+</div><!-- EDIT5 PLUGIN_WRAP_END [0-] -->
+</div>
+<!-- EDIT1 SECTION "Update" [1-1249] -->
+<h3 class="sectionedit6" id="mellanox_mlx5_ib">Mellanox_MLX5_IB</h3>
+<div class="level3">
+
+<p>
+Activate IPoIB just by loading the ib_ipoib module
+</p>
+<pre class="code"># modprobe ib_ipoib
+# ibstat
+# ibping -G 0x0002c90300eac7d0
+Pong from localhost.localdomain.(none) (Lid 1): time 0.083 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.076 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.070 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.070 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.068 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.069 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.066 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.068 ms
+Pong from localhost.localdomain.(none) (Lid 1): time 0.065 ms</pre>
+
+</div>
+<!-- EDIT6 SECTION "Mellanox_MLX5_IB" [1250-] -->

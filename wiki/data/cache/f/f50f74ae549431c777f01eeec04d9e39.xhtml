@@ -1,0 +1,20 @@
+
+<p>
+* Make Image - Ramdisk
+</p>
+<pre class="code">  make Image
+  dd if=uRamdisk of=Ramdisk bs=64 skip=1</pre>
+
+<p>
+* Copy Image, Ramdisk-APM to /boot folder. Then modified at grub.cfg
+<a href="/wiki/lib/exe/detail.php?id=bootup_embedded_device-tree&amp;media=10_34_52.png" class="media" title="10_34_52.png"><img src="/wiki/lib/exe/fetch.php?w=700&amp;tok=5bb104&amp;media=10_34_52.png" class="mediacenter" alt="" width="700" /></a>
+</p>
+
+<p>
+* How to check config
+</p>
+<pre class="code">[root@(none) ~]# cat /proc/config.gz | gunzip  | grep CONFIG_IPV6=y                                              
+CONFIG_IPV6=y                                                                                                
+[root@(none) ~]# cat /proc/config.gz | gunzip  | grep STP
+CONFIG_STP=y                                                                                                 
+[root@(none) ~]#</pre>

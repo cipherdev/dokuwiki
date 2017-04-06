@@ -1,0 +1,52 @@
+
+<p>
+export TOOLS_DIR=/home/huyle/AMI/tools/tools27/Linux-x64/Tools
+export AARCH64_TOOLS_DIR=/home/huyle/AMI/tools/9.0.3-le/apm-aarch64/9.0.3-le/bin
+export AARCH64_TOOL_PREFIX=aarch64-apm-linux-gnu-
+git clone gitadmin@dengit03:firmware/apm-ami-aptiov.git
+</p>
+
+<p>
+1. Setup Tools
+</p>
+<pre class="code">Download: http://spweb.amcc.com/eng/sweng/Shared%20Documents/AMI/AptioV/Linux-x64_Aptio_5.x_TOOLS_29.tar.gz
+tar xvzf Linux-x64_Aptio_5.x_TOOLS_29.tar.gz
+scp hule@10.38.12.21:/hcm_software/ftproot/toolchain/apm-9.0.3/prebuilt/apm-9.0.3-le-20160517-crosstools.tar.bz2 .
+sudo mkdir -p 9.0.3-le
+sudo tar --strip-components=1 -xf apm-9.0.3-le-20160517-crosstools.tar.bz2 -C 9.0.3-le</pre>
+
+<p>
+—
+APM ARMv8 optimized compiler:
+</p>
+<pre class="code">wget ftp://amccsw:special4u@ftp.apm.com/apmsw/toolchains/apm-9.0.3-le-20160517-crosstools.tar.bz2
+wget ftp://amccsw:special4u@ftp.apm.com/apmsw/toolchains/apm-9.0.3-le-20160517-nativetools.tar.bz2</pre>
+
+<p>
+<strong>–Learning to code APTIOV</strong>
+</p>
+
+<p>
+<strong>1. How to adding checkbox and modified string</strong>
+</p>
+
+<p>
+- The file needing to edit *.uni, *.sdl, *.sd files
+</p>
+
+<p>
+- In *.sdl file need adding for example to USB:
+</p>
+<pre class="code">PATH
+      Name            = &quot;USB_DXE_DIR&quot;
+End</pre>
+<pre class="code">ELINK   
+      Name            = &quot;$(USB_DXE_DIR)/UsbScreenController.sd&quot;
+      Parent          = &quot;SETUP_DEFINITIONS&quot;
+      InvokeOrder     = AfterParent
+End</pre>
+<pre class="code">ELINK   
+      Name            = &quot;$(USB_DXE_DIR)/UsbController.uni&quot;
+      Parent          = &quot;SetupStringFiles&quot;
+      InvokeOrder     = AfterParent
+End</pre>

@@ -1,0 +1,42 @@
+===== Textbox =====
+
+<box 80% round orange|a title> the box contents</box>
+<box 30% left blue>the box contents</box|a caption>
+<box 60% round #f99 #fc9 #fcc #f60|title>the box contents</box|caption>
+<box> the box contents </box>
+==== LGit ====
+  git remote rm linux-next
+  git remote add linux-next git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+  git fetch linux-next
+  git show 11659a1d54b670f05ff91627934aaadf376db937
+  git cherry-pick 11659a1d54b670f05ff91627934aaadf376db937
+
+-- rename branch 
+  git branch centos-apm-7.3-ilp32-temp origin/centos-apm-7.3-ilp32
+  git push origin --set-upstream centos-apm-7.3-ilp32-temp
+  git push origin :centos-apm-7.3-ilp32
+  git branch -d old
+  git checkout master
+  git branch new
+  git megre new
+  git revert $commited
+
+  git rebase abc/master
+  git commit --author="Yury Norov <ynorov@caviumnetworks.com>"
+  git format-patch -M -C CommitT~1..commitS <path>/folder
+  git apply -v ../*.patch
+  
+  sudo update-alternatives --config editor <<< changed editor
+  git commit --amend <<< update commit message
+  
+  git archive --remote=10.38.12.20: | tar -x
+  
+  $ git push origin --delete <branch_name>
+$ git branch -d <branch_name>
+
+
+make -C tianocore distclean
+make BE=0 tianocore_basetools
+tianocore_mustang_all tianocore_merlin_all \
+        tianocore_sydney_all tianocore_apps \
+        capsule_mustang capsule_merlin capsule_sydney
